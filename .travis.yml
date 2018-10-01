@@ -1,0 +1,14 @@
+language: go
+
+go:
+  - "1.10.3"
+
+
+services:
+  - docker
+
+deploy:
+  provider: script
+  script: bash deploy.sh
+  on:
+branch: master

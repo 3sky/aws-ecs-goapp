@@ -1,5 +1,3 @@
-//bash.org.pl/random/
-
 package main
 
 import (
@@ -17,8 +15,7 @@ func GetJoke(w http.ResponseWriter, r *http.Request) {
 	enc := json.NewEncoder(w)
 	enc.SetEscapeHTML(false)
 	_ = enc.Encode(DownloadJoke())
-	// s :=
-	// json.NewEncoder(w).Encode(s.SetEscapeHTML(false))
+
 }
 
 //SayHello seyhello
