@@ -13,7 +13,7 @@ curl https://raw.githubusercontent.com/silinternational/ecs-deploy/master/ecs-de
 sudo chmod +x /usr/bin/ecs-deploy
 
 # login AWS ECR
-eval $(aws ecr get-login --region eu-west-1)
+eval $(aws ecr get-login --no-include-email | sed ‘s|https://||’)
 
 # build the docker image and push to an image repository
 docker build -t goapp .
