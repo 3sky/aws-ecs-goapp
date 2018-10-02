@@ -1,5 +1,6 @@
 # install AWS SDK
 pip install --user awscli
+pip install --user 'requests[security]'
 export PATH=$PATH:$HOME/.local/bin
 
 # install ecs-deploy
