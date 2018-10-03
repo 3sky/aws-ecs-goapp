@@ -3,6 +3,7 @@ RUN mkdir /build
 RUN apk add --no-cache git  \
     && go get github.com/PuerkitoBio/goquery \
     && go get github.com/gorilla/mux \
+    && go get github.com/gorilla/handlers \
     && apk del git 
 ADD . /build/
 WORKDIR /build 

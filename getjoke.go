@@ -5,10 +5,12 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"strings"
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 )
 
@@ -64,6 +66,6 @@ func main() {
 	router.HandleFunc("/", Check).Methods("GET")
 	router.HandleFunc("/hello", SayHello).Methods("GET")
 	router.HandleFunc("/joke", GetJoke).Methods("GET")
-	log.Fatal(http.ListenAndServe(":8080", router))
-
+	loggedRouter := handlers.LoggingHandler(os.Stdout, router)
+	http.ListenAndServe(":8080", loggedRouter)
 }
