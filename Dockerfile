@@ -13,5 +13,5 @@ RUN adduser -S -D -H -h /app appuser
 USER appuser
 COPY --from=builder /build/main /app/
 WORKDIR /app
+EXPOSE 8080
 CMD ["./main"]
-
