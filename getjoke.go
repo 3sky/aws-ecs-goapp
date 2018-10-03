@@ -2,9 +2,11 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
 	"strings"
+	"time"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/gorilla/mux"
@@ -22,6 +24,13 @@ func GetJoke(w http.ResponseWriter, r *http.Request) {
 func SayHello(w http.ResponseWriter, r *http.Request) {
 	hmgs := "Hello Message"
 	json.NewEncoder(w).Encode(hmgs)
+}
+
+//Check will work on `/`
+func Check(w http.ResponseWriter, r *http.Request) {
+	dt := time.Now()
+	cmsg := fmt.Sprintf("It work at: %s", dt.String())
+	json.NewEncoder(w).Encode(cmsg)
 }
 
 //DownloadJoke get from bash.org.pl/random
@@ -52,6 +61,7 @@ func DownloadJoke() string {
 
 func main() {
 	router := mux.NewRouter()
+	router.HandleFunc("/", Check).Methods("GET")
 	router.HandleFunc("/hello", SayHello).Methods("GET")
 	router.HandleFunc("/joke", GetJoke).Methods("GET")
 	log.Fatal(http.ListenAndServe(":8080", router))
