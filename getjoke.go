@@ -24,7 +24,7 @@ func GetJoke(w http.ResponseWriter, r *http.Request) {
 
 //SayHello seyhello
 func SayHello(w http.ResponseWriter, r *http.Request) {
-	hmgs := "Hello Message"
+	hmgs := "Hello Scalac"
 	json.NewEncoder(w).Encode(hmgs)
 }
 
